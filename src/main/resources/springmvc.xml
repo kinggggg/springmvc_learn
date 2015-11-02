@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+						http://www.springframework.org/schema/mvc/spring-mvc.xsd
+						http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 处理器适配器 所有处理器适配器都实现 HandlerAdapter接口 -->
+	<beans:bean
+		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+		
+	<!-- 配置handler -->
+	<beans:bean name="/queryItems.action" class="com.zeek.springmvc.ItemsController1" />
+	
+	<!-- 处理器映射器 将bean的name作为url进行查找 ，需要在配置Handler时指定beanname（就是url） 
+	-->
+	<beans:bean
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+
+	<!-- 视图解析器
+	解析jsp解析，默认使用jstl标签，classpath下的得有jstl的包
+	 -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	</beans:bean>
+
+</beans:beans>
