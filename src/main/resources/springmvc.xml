@@ -15,10 +15,16 @@
 	<!-- 配置handler -->
 	<beans:bean id="itemsController1" name="/queryItems.action" class="com.zeek.springmvc.ItemsController1" />
 	
-	<!-- 处理器映射器 将bean的name作为url进行查找 ，需要在配置Handler时指定beanname（就是url） 
-	-->
+	<!-- 配置另外一个Handler -->
+	<beans:bean id="itemsController2" class="com.zeek.springmvc.ItemsController2" />
+	
+	<!-- 处理器映射器 --> 
+	<!-- 第一个处理器映射器 将bean的name作为url进行查找 ，需要在配置Handler时指定beanname（就是url）-->
 	<beans:bean
 		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+		
+	<!-- 另一个非注解的适配器 -->
+	<beans:bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>
 	
 	<!--  配置简单URL处理器映射器 -->	
 	<beans:bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" >
@@ -26,6 +32,7 @@
 			<beans:props>
 				<beans:prop key="queryItems1.action">itemsController1</beans:prop>
 				<beans:prop key="queryItems2.action">itemsController1</beans:prop>
+				<beans:prop key="queryItems3.action">itemsController2</beans:prop>
 			</beans:props>
 		</beans:property>
 	</beans:bean>
