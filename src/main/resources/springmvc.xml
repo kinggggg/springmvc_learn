@@ -25,6 +25,21 @@
 	<beans:bean
 		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
 		
+	<!--注解映射器 -->
+	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+	<!--注解适配器 -->
+	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+	
+	<!-- 对于注解的Handler可以通过<bean>元素单个配置（如下）,但是在
+	实际开发中建议使用组件扫描
+	 -->
+	<!-- <bean class="com.zeek.springmvc.ItemsController3" /> -->
+	<!-- 可以扫描controller、service、...
+	这里让扫描controller，指定controller的包
+	 -->
+	<context:component-scan base-package="com.zeek.springmvc"></context:component-scan>
+	
+		
 	<!--  第二个处理器映射器.配置简单URL处理器映射器 -->	
 	<beans:bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" >
 		<beans:property name="mappings">
