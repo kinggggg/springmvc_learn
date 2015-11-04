@@ -39,8 +39,10 @@ public class ItemsController3 {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("itemsList", itemsList);
 
-		// 指定视图
-		modelAndView.setViewName("/WEB-INF/jsp/items/itemsList.jsp");
+		/**
+		 * 指定视图.如果在springmvc.xml配置文件中配置了jsp的前缀和后缀后，下边的路径只需指定部分路径即可
+		 */
+		modelAndView.setViewName("items/itemsList");
 		
 		return modelAndView;
 		

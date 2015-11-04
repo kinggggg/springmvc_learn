@@ -65,6 +65,8 @@
 	 -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/jsp/" /><!-- 配置视图解析器的前缀 -->
+		<beans:property name="suffix" value=".jsp" /><!-- 配置视图解析器的后缀 -->
 	</beans:bean>
 
 </beans:beans>
